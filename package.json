@@ -1,0 +1,25 @@
+{
+  "name": "@mherrera/react-components",
+  "version": "1.0.0",
+  "description": "React components library",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "react",
+    "components",
+    "library",
+    "reusable"
+  ],
+  "author": "Miguel Herrera <migueljherrera@gmail.com>",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mherrera05/react-components.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mherrera05/react-components/issues"
+  },
+  "homepage": "https://github.com/mherrera05/react-components#readme"
+}
