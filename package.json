@@ -4,7 +4,7 @@
   "description": "React components library",
   "main": "index.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "start": "node index.ts"
   },
   "keywords": [
@@ -13,13 +13,9 @@
     "library",
     "reusable"
   ],
-  "peerDependencies": {
-    "react": "^18.3.1",
-    "react-dom": "^17.0.0 || ^18.0.0"
-  },
-  "devDependencies": {
-    "@types/react": "^18.3.18",
-    "@types/react-dom": "18.2.7"
+  "dependencies": {
+    "react": "19.2.0",
+    "react-dom": "19.2.0"
   },
   "author": "Miguel Herrera <migueljherrera@gmail.com>",
   "license": "ISC",
@@ -30,5 +26,17 @@
   "bugs": {
     "url": "https://github.com/mherrera05/react-components/issues"
   },
-  "homepage": "https://github.com/mherrera05/react-components#readme"
+  "homepage": "https://github.com/mherrera05/react-components#readme",
+  "devDependencies": {
+    "@babel/core": "^7.28.5",
+    "@babel/preset-env": "^7.28.5",
+    "@babel/preset-react": "^7.28.5",
+    "@babel/preset-typescript": "^7.28.5",
+    "@testing-library/react": "^16.3.0",
+    "@types/jest": "^30.0.0",
+    "@types/react": "19.2.7",
+    "babel-jest": "^30.2.0",
+    "jest": "30.2.0",
+    "jest-environment-jsdom": "^30.2.0"
+  }
 }
