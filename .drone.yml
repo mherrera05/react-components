@@ -1,0 +1,9 @@
+kind: pipeline
+name: staging
+
+steps:
+- name: test
+  image: node:20.18.0
+  commands:
+  - npm install 
+  - npm run test
