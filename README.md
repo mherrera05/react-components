@@ -1,4 +1,5 @@
 # React Components
+[![Build Status](https://drone.softlutions.cl/api/badges/mherrera05/react-components/status.svg?ref=refs/heads/main)](https://drone.softlutions.cl/mherrera05/react-components)
 
 ## Table of Contents
 
