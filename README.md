@@ -20,6 +20,34 @@ npm install
 
 ## Components
 
+### GoogleAuthButton
+
+#### Properties
+
+| Property | Type | Description | Default |
+|----------|------|-------------|---------|
+| `googleLoginHost` | `string` | URL for the Google Identity Services script (e.g. `https://accounts.google.com/gsi/client`) | - |
+| `googleLoginClientId` | `string` | OAuth 2.0 Client ID for your Google application | - |
+| `googleLoginUrl` | `string` | Redirect/login URI where Google sends the response | - |
+
+#### Usage
+
+```jsx
+import { GoogleAuthButton } from './components';
+
+export default function App() {
+    return (
+        <>
+            <GoogleAuthButton
+                googleLoginHost="https://accounts.google.com/gsi/client"
+                googleLoginClientId="YOUR_GOOGLE_CLIENT_ID"
+                googleLoginUrl="https://yourapp.com/auth/google"
+            />
+        <>
+    );
+}
+```
+
 ### Button
 
 | Property | Type | Description | Default |
@@ -28,35 +56,3 @@ npm install
 | `onClick` | `function` | Click handler | - |
 | `variant` | `'primary' \| 'secondary'` | Button style | `'primary'` |
 | `disabled` | `boolean` | Disable button | `false` |
-
-### Card
-
-| Property | Type | Description | Default |
-|----------|------|-------------|---------|
-| `title` | `string` | Card title | - |
-| `children` | `ReactNode` | Card content | - |
-| `elevation` | `number` | Shadow depth | `1` |
-
-### Input
-
-| Property | Type | Description | Default |
-|----------|------|-------------|---------|
-| `placeholder` | `string` | Input placeholder text | - |
-| `value` | `string` | Input value | - |
-| `onChange` | `function` | Change handler | - |
-| `type` | `string` | Input type | `'text'` |
-
-## Usage
-
-```jsx
-import { Button, Card, Input } from './components';
-
-export default function App() {
-    return (
-        <Card title="Welcome">
-            <Input placeholder="Enter text" />
-            <Button label="Submit" />
-        </Card>
-    );
-}
-```
