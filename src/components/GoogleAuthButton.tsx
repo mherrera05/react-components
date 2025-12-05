@@ -1,4 +1,4 @@
-import React, { use, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 interface GoogleAuthButtonProps {
     googleLoginHost: string
@@ -18,7 +18,6 @@ export default function GoogleAuthButton({
     }, [])
 
     return (
-
         <>{
             isScriptLoaded ? <div className="btn-group mb-3 d-flex flex-row justify-content-center" role="group" aria-label="Google login">
                 <script src={googleLoginHost} async></script>
@@ -40,5 +39,4 @@ export default function GoogleAuthButton({
         }
         </>
     )
-
 }
