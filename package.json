@@ -1,10 +1,11 @@
 {
   "name": "@mherrera/react-components",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "React components library",
   "main": "index.ts",
   "scripts": {
     "test": "jest",
+    "test:coverage": "jest --coverage",
     "start": "node index.ts"
   },
   "keywords": [
