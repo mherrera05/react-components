@@ -1,4 +1,5 @@
 # React Components
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/c12e1c81ab3644e5a2ea145ef87b42a7)](https://app.codacy.com/gh/mherrera05/react-components?utm_source=github.com&utm_medium=referral&utm_content=mherrera05/react-components&utm_campaign=Badge_Grade)
 [![Build Status](https://drone.softlutions.cl/api/badges/mherrera05/react-components/status.svg?ref=refs/heads/main)](https://drone.softlutions.cl/mherrera05/react-components)
 
 ## Table of Contents
