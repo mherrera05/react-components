@@ -16,7 +16,6 @@ export type statusOptionsResponse = {
 interface ServerStatusService {
     getServerStatus: () => Promise<statusOptionsResponse>
 }
-
 interface ServerStatusProps {
     onlineIcon: string
     offlineIcon: string
@@ -26,14 +25,13 @@ interface ServerStatusProps {
 
 export function ServerStatus({ onlineIcon, offlineIcon, refreshInterval = intervalDefault, service }: ServerStatusProps) {
     const [status, setStatus] = useState<statusOptionsResponse | null>(null)
-    const getStatus = setInterval(async () => {
-        const newStatus = await service.getStatus()
-        setStatus(newStatus)
-    }, refreshInterval)
 
-    useEffect(() => {
-        return () => clearInterval(getStatus)
-    }, [getStatus, status])
+     useEffect(() => {
+        const executionId = setInterval(async () => {
+            setStatus(await service.getServerStatus())
+        }, refreshInterval)
+        return () => clearInterval(executionId)
+    }, [])
 
     if (!status) {
         return <></>
