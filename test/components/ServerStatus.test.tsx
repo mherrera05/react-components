@@ -10,8 +10,8 @@ const intervals = {
 describe('Server Status', () => {
     it('should not render server status first render', async () => {
         const mockService = {
-            getStatus: async () => {
-                return Promise.resolve({status: 'online', responseTime: 123} as {status: 'online' | 'offline', responseTime: number})
+            getServerStatus: async () => {
+                return Promise.resolve({ status: 'online', responseTime: 123 } as { status: 'online' | 'offline', responseTime: number })
             }
         }
         const component = render(<ServerStatus
@@ -28,8 +28,8 @@ describe('Server Status', () => {
 
     it('should render server status as online after an interval', async () => {
         const mockService = {
-            getStatus: async () => {
-                return Promise.resolve({status: 'online', responseTime: 123} as {status: 'online' | 'offline', responseTime: number})
+            getServerStatus: async () => {
+                return Promise.resolve({ status: 'online', responseTime: 123 } as { status: 'online' | 'offline', responseTime: number })
             }
         }
         const component = render(<ServerStatus
@@ -39,17 +39,16 @@ describe('Server Status', () => {
             service={mockService}
         />)
 
-         await waitFor(async () => {
+        await waitFor(async () => {
             const result = await component.findAllByText(/Servidor: online - 123ms/i)
             expect(result).toBeDefined()
         })
-
     })
 
     it('should render server status as offline after an interval', async () => {
         const mockService = {
-            getStatus: async () => {
-                return Promise.resolve({status: 'offline', responseTime: 123} as {status: 'online' | 'offline', responseTime: number})
+            getServerStatus: async () => {
+                return Promise.resolve({ status: 'offline', responseTime: 123 } as { status: 'online' | 'offline', responseTime: number })
             }
         }
         const component = render(<ServerStatus
@@ -63,6 +62,5 @@ describe('Server Status', () => {
             const result = await component.findAllByText(/Servidor: offline/i)
             expect(result).toBeDefined()
         })
-
     })
 })

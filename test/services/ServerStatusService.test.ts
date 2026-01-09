@@ -6,7 +6,7 @@ describe('Server Status Service', () => {
             .mockReturnValueOnce(1000)
             .mockReturnValueOnce(1100);
         const mockRepository = {
-            getStatus: async () => {
+            getServerStatus: async () => {
                 return Promise.resolve({ status: 200 });
             }
         };
@@ -19,7 +19,7 @@ describe('Server Status Service', () => {
 
     it('should return offline status when server is offline', async () => {
         const mockRepository = {
-            getStatus: async () => {
+            getServerStatus: async () => {
                 return Promise.resolve({ status: 500 });
             }
         };
@@ -32,7 +32,7 @@ describe('Server Status Service', () => {
 
     it('should return offline status when repository throws an error', async () => {
         const mockRepository = {
-            getStatus: async () => {
+            getServerStatus: async () => {
                 return Promise.resolve({ status: 500 });
             }
         };

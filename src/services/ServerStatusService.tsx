@@ -2,13 +2,13 @@ import { statusOptionsResponse } from "../components/ServerStatus"
 import { InMemoryServerStatusRepository } from "../repositories/InMemoryServerStatusRepository"
 
 export interface ServerStatusRepository {
-    getStatus: () => Promise<{ status: number }>
+    getServerStatus: () => Promise<{ status: number }>
 }
 
 export async function getServerStatus(repository: ServerStatusRepository = new InMemoryServerStatusRepository()): Promise<statusOptionsResponse> {
     try {
         const time = Date.now()
-        const response = await repository.getStatus()
+        const response = await repository.getServerStatus()
 
         if (response.status !== 200) {
             throw new Error('Server is offline')

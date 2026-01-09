@@ -3,7 +3,9 @@ import { InMemoryServerStatusRepository } from '../../src/repositories/InMemoryS
 describe('InMemoryServerStatusRepository', () => {
     it('should return status 200', async () => {
         const repository = new InMemoryServerStatusRepository()
-        const result = await repository.getStatus()
+
+        const result = await repository.getServerStatus()
+
         expect(result.status).toBe(200)
     })
 })

@@ -14,7 +14,7 @@ export type statusOptionsResponse = {
 }
 
 interface ServerStatusService {
-    getStatus: () => Promise<statusOptionsResponse>
+    getServerStatus: () => Promise<statusOptionsResponse>
 }
 
 interface ServerStatusProps {
@@ -45,5 +45,3 @@ export function ServerStatus({ onlineIcon, offlineIcon, refreshInterval = interv
         </>
     )
 }
-
-
