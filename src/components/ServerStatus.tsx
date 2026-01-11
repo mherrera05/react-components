@@ -28,10 +28,12 @@ export function ServerStatus({ onlineIcon, offlineIcon, refreshInterval = interv
     const [status, setStatus] = useState<statusOptionsResponse | null>(null)
 
     useEffect(() => {
-        const executionId = setInterval(async () => {
-            setStatus(await serverStatusService.getStatus())
+        const executionId = setInterval(() => {
+            serverStatusService.getStatus().then(newStatus => {
+                setStatus(newStatus)
+            })
         }, refreshInterval)
-        return () => clearInterval(executionId)
+        return () => { clearInterval(executionId) }
     })
 
     if (!status) {

@@ -6,13 +6,13 @@
 - [Overview](#overview)
 - [Installation](#installation)
 - [Components](#components)
-  - [GoogleAuthButton](#googleauthbutton)
-    - [Properties](#properties)
-    - [Usage](#usage)
-  - [Server Status](#server-status)
-    - [Properties](#properties-1)
-    - [Usage](#usage-1)
-    - [Dependencies](#dependencies)
+  - [GoogleAuthButton](#1-googleauthbutton)
+    - [GoogleAuthButton Properties](#googleauthbutton-properties)
+    - [GoogleAuthButton Usage](#googleauthbutton-usage)
+  - [Server Status](#2-server-status)
+    - [Server Status Properties](#server-status-properties)
+    - [Server Status Usage](#server-status-usage)
+    - [Server Status Dependencies](#server-status-dependencies)
 
 ## Overview
 
@@ -26,9 +26,9 @@ npm install --save @mherrera/react-components
 
 ## Components
 
-### GoogleAuthButton
+### 1. GoogleAuthButton
 
-#### Properties
+#### GoogleAuthButton Properties
 
 | Property | Type | Description | Default |
 |----------|------|-------------|---------|
@@ -36,7 +36,7 @@ npm install --save @mherrera/react-components
 | `googleLoginClientId` | `string` | OAuth 2.0 Client ID for your Google application | - |
 | `googleLoginUrl` | `string` | Redirect/login URI where Google sends the response | - |
 
-#### Usage
+#### GoogleAuthButton Usage
 
 ```jsx
 import { GoogleAuthButton } from './components';
@@ -54,9 +54,9 @@ export default function App() {
 }
 ```
 
-### Server Status
+### 2. Server Status
 
-#### Properties
+#### Server Status Properties
 
 | Property | Type | Description | Default |
 |----------|------|-------------|---------|
@@ -65,7 +65,7 @@ export default function App() {
 | `refreshInterval` | `number` | Polling interval in milliseconds to check server status | `180000` |
 | `serverStatusService` | `IServerStatusService` | Service instance for fetching server status | `ServerStatusService.createDefault()` |
 
-#### Usage
+#### Server Status Usage
 
 ```jsx
 import { ServerStatus } from './components';
@@ -111,7 +111,7 @@ export default function App() {
 }
 ```
 
-#### Dependencies
+#### Server Status Dependencies
 
 The `ServerStatus` component follows a layered architecture with the following dependency chain:
 
