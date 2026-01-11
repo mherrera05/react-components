@@ -1,22 +1,22 @@
 import { statusOptionsResponse, statusOptions, IServerStatusService } from "../components/ServerStatus"
 import { InMemoryServerStatusRepository } from "../repositories/InMemoryServerStatusRepository"
 
-export interface ServerStatusRepository {
+export interface IServerStatusRepository {
     getStatus: () => Promise<{ status: number }>
 }
 
 export class ServerStatusService implements IServerStatusService {
-    repository: ServerStatusRepository
+    repository: IServerStatusRepository
 
-    constructor(repository: ServerStatusRepository) {
+    constructor(repository: IServerStatusRepository) {
         this.repository = repository
     }
 
-    static createDefault(repository: ServerStatusRepository = new InMemoryServerStatusRepository()): IServerStatusService {
+    static createDefault(repository: IServerStatusRepository = new InMemoryServerStatusRepository()): IServerStatusService {
         return new ServerStatusService(repository)
     }
 
-    static create(repository: ServerStatusRepository): IServerStatusService {
+    static create(repository: IServerStatusRepository): IServerStatusService {
         return new ServerStatusService(repository)
     }
 
