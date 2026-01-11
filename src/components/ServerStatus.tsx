@@ -1,37 +1,38 @@
 import React, { useEffect, useState } from 'react'
+import { ServerStatusService } from '../services/ServerStatusService'
 
-const intervalDefault: number = 300000
-const statusOptions: statusOptionsEnum = {
-    online: 'online',
-    offline: 'offline'
+const intervalDefault: number = 180000
+export const statusOptions: statusOptionsEnum = {
+    online: 'Online',
+    offline: 'Offline'
 }
 
-type statusOption = 'online' | 'offline'
+type statusOption = 'Online' | 'Offline'
 type statusOptionsEnum = { online: statusOption, offline: statusOption }
 export type statusOptionsResponse = {
     status: statusOption
     responseTime: number
 }
 
-interface ServerStatusService {
-    getServerStatus: () => Promise<statusOptionsResponse>
+export interface IServerStatusService {
+    getStatus: () => Promise<statusOptionsResponse>
 }
-interface ServerStatusProps {
+interface IServerStatusProps {
     onlineIcon: string
     offlineIcon: string
-    refreshInterval: number
-    service: ServerStatusService
+    refreshInterval?: number
+    serverStatusService?: IServerStatusService
 }
 
-export function ServerStatus({ onlineIcon, offlineIcon, refreshInterval = intervalDefault, service }: ServerStatusProps) {
+export function ServerStatus({ onlineIcon, offlineIcon, refreshInterval = intervalDefault, serverStatusService = ServerStatusService.createDefault() }: IServerStatusProps) {
     const [status, setStatus] = useState<statusOptionsResponse | null>(null)
 
-     useEffect(() => {
+    useEffect(() => {
         const executionId = setInterval(async () => {
-            setStatus(await service.getServerStatus())
+            setStatus(await serverStatusService.getStatus())
         }, refreshInterval)
         return () => clearInterval(executionId)
-    }, [])
+    })
 
     if (!status) {
         return <></>
@@ -39,7 +40,7 @@ export function ServerStatus({ onlineIcon, offlineIcon, refreshInterval = interv
 
     return (
         <>
-            <i className={status.status === statusOptions.online ? onlineIcon : offlineIcon} style={{ color: status.status === statusOptions.online ? 'inherit' : 'red' }}></i> Servidor: {status.status} {status.status === statusOptions.online ? `- ${status.responseTime}ms` : ''}
+            <i className={status.status === statusOptions.online ? onlineIcon : offlineIcon} style={{ color: status.status === statusOptions.online ? 'inherit' : 'red' }}></i> Server: {status.status} {status.status === statusOptions.online ? `- ${status.responseTime}ms` : ''}
         </>
     )
 }

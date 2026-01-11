@@ -1,22 +1,38 @@
-import { statusOptionsResponse } from "../components/ServerStatus"
+import { statusOptionsResponse, statusOptions, IServerStatusService } from "../components/ServerStatus"
 import { InMemoryServerStatusRepository } from "../repositories/InMemoryServerStatusRepository"
 
 export interface ServerStatusRepository {
-    getServerStatus: () => Promise<{ status: number }>
+    getStatus: () => Promise<{ status: number }>
 }
 
-export async function getServerStatus(repository: ServerStatusRepository = new InMemoryServerStatusRepository()): Promise<statusOptionsResponse> {
-    try {
-        const time = Date.now()
-        const response = await repository.getServerStatus()
+export class ServerStatusService implements IServerStatusService {
+    repository: ServerStatusRepository
 
-        if (response.status !== 200) {
-            throw new Error('Server is offline')
+    constructor(repository: ServerStatusRepository) {
+        this.repository = repository
+    }
+
+    static createDefault(repository: ServerStatusRepository = new InMemoryServerStatusRepository()): IServerStatusService {
+        return new ServerStatusService(repository)
+    }
+
+    static create(repository: ServerStatusRepository): IServerStatusService {
+        return new ServerStatusService(repository)
+    }
+
+    async getStatus(): Promise<statusOptionsResponse> {
+        try {
+            const time = Date.now()
+            const response = await this.repository.getStatus()
+
+            if (response.status !== 200) {
+                throw new Error('Server is offline')
+            }
+
+            return Promise.resolve({ status: statusOptions.online, responseTime: Date.now() - time })
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        } catch (error) {
+            return Promise.resolve({ status: statusOptions.offline, responseTime: 0 })
         }
-        
-        return Promise.resolve({ status: 'online', responseTime: Date.now() - time })
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    } catch (error) {
-        return Promise.resolve({ status: 'offline', responseTime: 0 })
     }
 }
