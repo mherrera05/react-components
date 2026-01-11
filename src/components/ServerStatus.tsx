@@ -29,7 +29,7 @@ export function ServerStatus({ onlineIcon, offlineIcon, refreshInterval = interv
 
     useEffect(() => {
         const executionId = setInterval(() => {
-            serverStatusService.getStatus().then(newStatus => {
+            void serverStatusService.getStatus().then(newStatus => {
                 setStatus(newStatus)
             })
         }, refreshInterval)

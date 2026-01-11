@@ -1,5 +1,7 @@
 # React Components
 [![Build Status](https://drone.softlutions.cl/api/badges/mherrera05/react-components/status.svg?ref=refs/heads/main)](https://drone.softlutions.cl/mherrera05/react-components)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/2252317c6e634959bb62df9a22f40fb6)](https://app.codacy.com/gh/mherrera05/react-components/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
+[![Codacy Badge](https://app.codacy.com/project/badge/Coverage/2252317c6e634959bb62df9a22f40fb6)](https://app.codacy.com/gh/mherrera05/react-components/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_coverage)
 
 ## Table of Contents
 
