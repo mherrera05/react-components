@@ -1,3 +1,4 @@
-import GoogleAuthButton from './components/GoogleAuthButton';
+import GoogleAuthButton from './components/GoogleAuthButton'
+import { ServerStatus } from './components/ServerStatus'
 
-export { GoogleAuthButton };
+export { GoogleAuthButton, ServerStatus }

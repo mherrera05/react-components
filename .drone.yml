@@ -4,6 +4,11 @@ name: staging
 steps:
 - name: test
   image: node:20.18.0
+  environment:
+    CODACY_PROJECT_TOKEN:
+      from_secret: codacy_project_token
   commands:
+  - export CODACY_PROJECT_TOKEN=$CODACY_PROJECT_TOKEN
   - npm install 
   - npm run test
+  - curl -Ls https://coverage.codacy.com/get.sh | bash
