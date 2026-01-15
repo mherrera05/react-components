@@ -5,9 +5,9 @@ import { Copyable } from "../../src/components/Copyable"
 describe('Copyable Component', () => {
     it('should show content text', () => {
         const component = render(<Copyable text="Sample Text" />)
-        
+
         const result = component.getByText(/Sample Text/i)
-        
+
         expect(result).toBeDefined()
     })
 
@@ -52,7 +52,7 @@ describe('Copyable Component', () => {
 
         fireEvent.mouseEnter(component.getByText(/Sample Text/i))
         fireEvent.click(component.getByText(/Copy/i))
-        
+
         waitFor(async () => {
             const result = await component.getByText(/Copied!/i)
             expect(result).toBeDefined()
@@ -71,11 +71,13 @@ describe('Copyable Component', () => {
 
         fireEvent.mouseEnter(component.getByText(/Sample Text/i))
         fireEvent.click(component.getByText(/Copy/i))
-        
+
         waitFor(async () => {
-            const result = await component.getByRole('img', { hidden: true })
-            expect(result).toBeDefined()
-            expect(result.className).toBe('check-icon-class')
+            const icon = await component.getByRole('img', { hidden: true })
+            const text = await component.getByText(/Copied!/i)
+            expect(icon).toBeDefined()
+            expect(icon.className).toBe('check-icon-class')
+            expect(text).toBeDefined()
         })
     })
 

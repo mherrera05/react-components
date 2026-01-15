@@ -21,6 +21,7 @@ const textStyle: React.CSSProperties = {
 
 const copyIconStyle: React.CSSProperties = {
     marginLeft: '2px',
+    marginRight: '2px',
 }
 
 export function Copyable({ text, copyIcon, checkIcon, copiedText = 'Copied!', fadeOutTime = 2000 }: CopyableProps) {
@@ -45,8 +46,8 @@ export function Copyable({ text, copyIcon, checkIcon, copiedText = 'Copied!', fa
         return className !== null && className !== undefined
     }
 
-    const copy = (copyIcon && isValid(copyIcon)) ? <i className={copyIcon} role='img' aria-label='Copy Icon' style={copyIconStyle} onClick={async () => { await handleCopy() }} /> : <span style={textStyle} onClick={async () => { await handleCopy() }}>Copy</span>
-    const check = (checkIcon && isValid(checkIcon)) ? <span style={textStyle}><i className={checkIcon} role='img' aria-label='Check Icon' style={copyIconStyle} /></span> : <span style={textStyle}>{copiedText}</span>
+    const copy = (copyIcon && isValid(copyIcon)) ? <i className={copyIcon} role='img' aria-label='Copy Icon' style={copyIconStyle} onClick={async () => void(await handleCopy())} /> : <span style={textStyle} onClick={async () => void(await handleCopy())}>Copy</span>
+    const check = (checkIcon && isValid(checkIcon)) ? <span style={textStyle}><i className={checkIcon} role='img' aria-label='Check Icon' style={copyIconStyle} /> {copiedText}</span> : <span style={textStyle}>{copiedText}</span>
 
     return (
         <span style={{ cursor: 'pointer' }} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
