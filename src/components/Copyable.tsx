@@ -28,10 +28,13 @@ export function Copyable({ text, copyIcon, checkIcon, copiedText = 'Copied!', fa
     const [isHovered, setIsHovered] = useState(false)
     const [isCopied, setIsCopied] = useState(false)
 
-    const handleCopy = async () => {
-        await navigator.clipboard.writeText(text)
-        setIsCopied(true)
-        setTimeout(() => { setIsCopied(false) }, fadeOutTime)
+    const handleCopy = () => {
+        navigator.clipboard.writeText(text).then(() => {
+            setIsCopied(true)
+            setTimeout(() => { setIsCopied(false) }, fadeOutTime)
+        }).catch((err) => {
+            console.error('Failed to copy text: ', err)
+        })
     }
 
     const handleMouseEnter = () => {
@@ -46,7 +49,7 @@ export function Copyable({ text, copyIcon, checkIcon, copiedText = 'Copied!', fa
         return className !== null && className !== undefined
     }
 
-    const copy = (copyIcon && isValid(copyIcon)) ? <i className={copyIcon} role='img' aria-label='Copy Icon' style={copyIconStyle} onClick={() => handleCopy()} /> : <span style={textStyle} onClick={() => handleCopy()}>Copy</span>
+    const copy = (copyIcon && isValid(copyIcon)) ? <i className={copyIcon} role='img' aria-label='Copy Icon' style={copyIconStyle} onClick={() => { handleCopy() }} /> : <span style={textStyle} onClick={() => { handleCopy() }}>Copy</span>
     const check = (checkIcon && isValid(checkIcon)) ? <span style={textStyle}><i className={checkIcon} role='img' aria-label='Check Icon' style={copyIconStyle} /> {copiedText}</span> : <span style={textStyle}>{copiedText}</span>
 
     return (

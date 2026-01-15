@@ -43,7 +43,7 @@ describe('Copyable Component', () => {
     it('should show copied text when clicked on copy', () => {
         Object.defineProperty(navigator, 'clipboard', {
             value: {
-                writeText: jest.fn(),
+                writeText: jest.fn().mockResolvedValue(undefined),
                 readText: jest.fn(),
             },
             configurable: true,
@@ -62,7 +62,7 @@ describe('Copyable Component', () => {
     it('should show copied icon and text when clicked on copy with checkIcon', () => {
         Object.defineProperty(navigator, 'clipboard', {
             value: {
-                writeText: jest.fn(),
+                writeText: jest.fn().mockResolvedValue(undefined),
                 readText: jest.fn(),
             },
             configurable: true,
