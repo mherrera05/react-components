@@ -32,8 +32,8 @@ export function Copyable({ text, copyIcon, checkIcon, copiedText = 'Copied!', fa
         navigator.clipboard.writeText(text).then(() => {
             setIsCopied(true)
             setTimeout(() => { setIsCopied(false) }, fadeOutTime)
-        }).catch((err) => {
-            console.error('Failed to copy text: ', err)
+        }).catch((error: unknown) => {
+            console.error('Failed to copy text: ', error)
         })
     }
 

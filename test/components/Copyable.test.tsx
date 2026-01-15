@@ -81,4 +81,25 @@ describe('Copyable Component', () => {
         })
     })
 
+    it('should not do anything when there is an error copying', () => {
+        global.console = { ...global.console, error: jest.fn() };
+        Object.defineProperty(navigator, 'clipboard', {
+            value: {
+                writeText: jest.fn().mockRejectedValueOnce(new Error('Copy failed')),
+                readText: jest.fn(),
+            },
+            configurable: true,
+        });
+        const component = render(<Copyable text="Sample Text" checkIcon={'check-icon-class'} />)
+
+        fireEvent.mouseEnter(component.getByText(/Sample Text/i))
+        fireEvent.click(component.getByText(/Copy/i))
+
+        waitFor(async () => {
+            const result = await component.queryByText(/Copied!/i)
+            expect(result).toBeNull()
+            expect(console.error).toHaveBeenCalledWith('Failed to copy text: ', new Error('Copy failed'))
+        })
+    })
+
 })
