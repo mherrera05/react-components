@@ -8,10 +8,13 @@
 - [Overview](#overview)
 - [Installation](#installation)
 - [Components](#components)
-  - [GoogleAuthButton](#1-googleauthbutton)
+  - [Copyable](#1-copyable)
+    - [Copyable Properties](#copyable-properties)
+    - [Copyable Usage](#copyable-usage)
+  - [GoogleAuthButton](#2-googleauthbutton)
     - [GoogleAuthButton Properties](#googleauthbutton-properties)
     - [GoogleAuthButton Usage](#googleauthbutton-usage)
-  - [Server Status](#2-server-status)
+  - [Server Status](#3-server-status)
     - [Server Status Properties](#server-status-properties)
     - [Server Status Usage](#server-status-usage)
     - [Server Status Dependencies](#server-status-dependencies)
@@ -28,7 +31,56 @@ npm install --save @mherrera/react-components
 
 ## Components
 
-### 1. GoogleAuthButton
+### 1. Copyable
+
+#### Copyable Properties
+
+| Property | Type | Description | Default |
+|----------|------|-------------|---------|
+| `text` | `string` | The text to be displayed and copied to clipboard | - |
+| `copyIcon` | `string \| null` | CSS class for the copy icon (e.g., `fas fa-copy` for FontAwesome, `bi bi-clipboard` for Bootstrap) | `null` |
+| `checkIcon` | `string \| null` | CSS class for the check icon shown after copying (e.g., `fas fa-check` for FontAwesome, `bi bi-check` for Bootstrap) | `null` |
+| `copiedText` | `string \| null` | Text to display when the text has been copied | `'Copied!'` |
+| `fadeOutTime` | `number` | Time in milliseconds before the "copied" indicator fades out | `2000` |
+
+#### Copyable Usage
+
+```jsx
+import { Copyable } from './components';
+
+export default function App() {
+    return (
+        <>
+            <Copyable
+                text="user@example.com"
+                copyIcon="fas fa-copy"
+                checkIcon="fas fa-check"
+                copiedText="Email copied!"
+                fadeOutTime={2000}
+            />
+        </>
+    );
+}
+```
+
+**Alternative: Using text-based copy/check indicators**
+
+```jsx
+import { Copyable } from './components';
+
+export default function App() {
+    return (
+        <>
+            <Copyable
+                text="https://example.com"
+                copiedText="Link copied!"
+            />
+        </>
+    );
+}
+```
+
+### 2. GoogleAuthButton
 
 #### GoogleAuthButton Properties
 
@@ -56,7 +108,7 @@ export default function App() {
 }
 ```
 
-### 2. Server Status
+### 3. Server Status
 
 #### Server Status Properties
 
