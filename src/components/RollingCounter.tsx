@@ -27,7 +27,9 @@ export function RollingCounter({ fromValue = 0, toValue, duration = 500 }: Rolli
         }
 
         const requestId = requestAnimationFrame(animate)
-        return () => cancelAnimationFrame(requestId)
+        return () => {
+            cancelAnimationFrame(requestId)
+        }
     }, [fromValue, toValue, duration])
 
     return (
