@@ -14,7 +14,10 @@
   - [GoogleAuthButton](#2-googleauthbutton)
     - [GoogleAuthButton Properties](#googleauthbutton-properties)
     - [GoogleAuthButton Usage](#googleauthbutton-usage)
-  - [Server Status](#3-server-status)
+  - [Rolling Counter](#3-rolling-counter)
+    - [Rolling Counter Properties](#rolling-counter-properties)
+    - [Rolling Counter Usage](#rolling-counter-usage)
+  - [Server Status](#4-server-status)
     - [Server Status Properties](#server-status-properties)
     - [Server Status Usage](#server-status-usage)
     - [Server Status Dependencies](#server-status-dependencies)
@@ -108,7 +111,49 @@ export default function App() {
 }
 ```
 
-### 3. Server Status
+### 3. Rolling Counter
+
+#### Rolling Counter Properties
+
+| Property | Type | Description | Default |
+|----------|------|-------------|---------|
+| `fromValue` | `number` | The starting value for the counter animation | `0` |
+| `toValue` | `number` | The ending value for the counter animation | - |
+| `duration` | `number` | Animation duration in milliseconds | `500` |
+
+#### Rolling Counter Usage
+
+```jsx
+import { RollingCounter } from './components';
+
+export default function App() {
+    return (
+        <>
+            <RollingCounter
+                fromValue={0}
+                toValue={100}
+                duration={500}
+            />
+        </>
+    );
+}
+```
+
+**Alternative: Basic counter with default starting value**
+
+```jsx
+import { RollingCounter } from './components';
+
+export default function App() {
+    return (
+        <>
+            <RollingCounter toValue={50} duration={1000} />
+        </>
+    );
+}
+```
+
+### 4. Server Status
 
 #### Server Status Properties
 
