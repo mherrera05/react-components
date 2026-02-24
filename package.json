@@ -23,10 +23,6 @@
     "library",
     "reusable"
   ],
-  "dependencies": {
-    "react": "19.2.0",
-    "react-dom": "19.2.0"
-  },
   "author": "Miguel Herrera <migueljherrera@gmail.com>",
   "license": "ISC",
   "repository": {
@@ -38,6 +34,8 @@
   },
   "homepage": "https://github.com/mherrera05/react-components#readme",
   "devDependencies": {
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
     "@babel/core": "^7.28.5",
     "@babel/preset-env": "^7.28.5",
     "@babel/preset-react": "^7.28.5",
