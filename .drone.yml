@@ -3,7 +3,7 @@ name: staging
 
 steps:
 - name: test
-  image: node:20.18.0
+  image: node:20.19.0
   environment:
     CODACY_PROJECT_TOKEN:
       from_secret: codacy_project_token
