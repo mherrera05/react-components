@@ -1,6 +1,6 @@
 {
   "name": "@mherrera/react-components",
-  "version": "1.4.2",
+  "version": "1.4.3",
   "description": "React components library",
   "main": "dist/index.js",
   "module": "dist/index.js",
